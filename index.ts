@@ -66,4 +66,5 @@ class Teacher {
 
 
 const teacher01 = new Teacher("01", "Khalid", 12000)
-teacher01.details() // Error: Cannot assign to 'details' because it is a read-only property
+// teacher01.details() // Error: Cannot assign to 'details' because it is a read-only property
+// console.log(information)
