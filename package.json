@@ -9,6 +9,11 @@
     "build": "tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
   },
+  "devDependencies": {
+    "@types/node": "^18.19.66",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.7.2"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
