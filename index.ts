@@ -85,3 +85,18 @@ class Transaction {
     this.date = date;
   }
 }
+
+//Example Usage
+const bank = new Bank("Turki's Bank");
+const branch01 = new Branch("Downtown Branch");
+
+bank.addBranch(branch01);
+
+const customer01 = new Customer("Alice", "01");
+branch01.addCustomer(customer01);
+
+const deposit = new Transaction(500, "2024-11-27");
+customer01.addTransaction(deposit);
+
+console.log(`Balance for ${customer01.getName()}:`, customer01.getBalance());
+console.log("Branches in bank:", bank.getBranches());
