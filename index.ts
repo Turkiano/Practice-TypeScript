@@ -19,11 +19,11 @@ class Bank {
 
 class Branch {
   name: string;
-  customers: [];
+  customers: Customer[];
 
   constructor(name: string) {
     this.name = name;
-    this.customers = Customer [];
+    this.customers = [];
   }
 
   getName() {
@@ -38,11 +38,11 @@ class Branch {
 class Customer {
   name: string;
   id: string;
-  transctions = Transaction[];
+  transactions: Transaction[];
   constructor(name: string, id: string) {
     this.name = name;
     this.id = id;
-    this.transctions;
+    this.transactions = [];
   }
 
   getName() {
@@ -54,18 +54,34 @@ class Customer {
   }
 
   getTranscations() {
-    return this.transctions;
+    return this.transactions;
   }
 
-  addTransaction(transction) {
-    if (transction.amount > 0) {
-      this.transctions.push(transction);
+  addTransaction(transaction: Transaction) {
+    if (transaction.amount > 0) {
+      this.transactions.push(transaction);
       return "transaction added";
     }
+
+    if (transaction.amount > this.getBalance()) {
+      return "no suficient balance";
+    }
+  }
+
+  getBalance() {
+    let balance = 0;
+    this.transactions.forEach((transaction) => {
+      balance += transaction.amount;
+    });
+    return balance;
   }
 }
 
-
-class Transaction{
-
+class Transaction {
+  amount: number;
+  date: string;
+  constructor(amount: number, date: string) {
+    this.amount = amount;
+    this.date = date;
+  }
 }
