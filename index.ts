@@ -15,6 +15,10 @@ class Bank {
   getBranches() {
     return JSON.stringify(this.branches, null, 2);
   }
+  //get transcations from branch class
+  addCustomerTransaction(branch: Branch, customerId: string, amount: number) {
+    branch.addCustomerTransaction(customerId, amount);
+  }
 }
 
 class Branch {
@@ -32,6 +36,17 @@ class Branch {
 
   addCustomer(customer: Customer) {
     this.customers.push(customer);
+  }
+  // Add a method to add a transaction to a specific customer
+  addCustomerTransaction(customerId: string, amount: number) {
+    //Finds the customer in the branch by their id
+    const customer = this.customers.find((c) => c.getId() === customerId);
+    if (!customer) {
+      return "customer not found";
+    }
+    //Creates a new Transaction and adds it to the customer's transactions list
+    const transaction = new Transaction(amount, new Date().toISOString());
+    return customer.addTransaction(transaction);
   }
 }
 
@@ -97,6 +112,7 @@ branch01.addCustomer(customer01);
 
 const deposit = new Transaction(500, "2024-11-27");
 customer01.addTransaction(deposit);
+bank.addCustomerTransaction(branch01, "01", -100); // Withdraw some money
 
 console.log(`Balance for ${customer01.getName()}:`, customer01.getBalance());
 console.log("Branches in bank:", bank.getBranches());
