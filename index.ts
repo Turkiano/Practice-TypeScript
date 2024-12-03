@@ -1,10 +1,19 @@
 class Bank {
   name: string;
-  branch: Branch[];
+  branches: Branch[];
 
   constructor(name: string) {
     this.name = name;
-    this.branch = [];
+    this.branches = [];
+  }
+
+  addBranch(branch: Branch) {
+    this.branches.push(branch);
+    console.log(`this${branch}has been added successfully!`);
+  }
+
+  getBranches() {
+    return JSON.stringify(this.branches, null, 2);
   }
 }
 
@@ -36,3 +45,13 @@ class Transaction {
     this.date = date;
   }
 }
+
+const bank01 = new Bank("myBank");
+const branch01 = new Branch("Downtown Branch");
+const branch02 = new Branch("Abdullah Branch");
+bank01.addBranch(branch01);
+bank01.addBranch(branch02);
+const branchesJson = bank01.getBranches();
+console.log(branchesJson);
+
+
