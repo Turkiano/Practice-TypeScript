@@ -43,6 +43,32 @@ class Customer {
     this.id = id;
     this.transaction = [];
   }
+  getName() {
+    return this.name;
+  }
+  getId() {
+    return this.id;
+  }
+
+  getTransaction() {
+    return this.transaction;
+  }
+  getBalance() {
+    let balance = 0;
+    this.transaction.forEach((e) => {
+      balance += e.amount;
+    });
+    return balance;
+  }
+
+  addTransaction(transaction: Transaction) {
+    if (transaction.amount > 0) {
+      this.transaction.push(transaction);
+    }
+    if (transaction.amount > this.getBalance()) {
+      return "no suficient balance";
+    }
+  }
 }
 
 class Transaction {
