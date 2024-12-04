@@ -9,7 +9,7 @@ class Bank {
 
   addBranch(branch: Branch) {
     this.branches.push(branch);
-    console.log(`this${branch}has been added successfully!`);
+    console.log(`this [${branch.name}] has been added successfully!`);
   }
 
   getBranches() {
@@ -58,14 +58,15 @@ const bank01 = new Bank("myBank");
 const branch01 = new Branch("Downtown Branch");
 const branch02 = new Branch("Abdullah Branch");
 
-//----------------------LevelOne---------
+console.log("//----------------------LevelOne---------");
 
 bank01.addBranch(branch01);
 bank01.addBranch(branch02);
 let getAllBranches = bank01.getBranches();
 console.log("LevelOne: " + getAllBranches);
+console.log("//----------------------LevelTwo---------");
 
-//----------------------LevelTwo---------
+//----------------------LevelTwo-------------------------
 const customer01 = new Customer("Turkiano", 0);
 branch01.addCustomer(customer01);
 
