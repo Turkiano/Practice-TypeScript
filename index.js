@@ -23,6 +23,12 @@ class Branch {
     addCustomer(NewCustomer) {
         this.customer.push(NewCustomer);
     }
+    toJSON() {
+        return {
+            name: this.name,
+            customers: this.customer, // Serialize customer details
+        };
+    }
 }
 class Customer {
     constructor(name, id) {
@@ -48,12 +54,20 @@ class Customer {
         return balance; // Return the total balance
     }
     addTransaction(transaction) {
-        if (transaction.amount > 0) {
-            this.transaction.push(transaction); // Adds the transaction if the amount is positive
-        }
-        if (transaction.amount > this.getBalance()) {
+        if (transaction.amount < 0 &&
+            Math.abs(transaction.amount) > this.getBalance()) {
             return "no suficient balance"; // Rejects the transaction if the amount exceeds the balance
         }
+        this.transaction.push(transaction);
+        return " transaction added successfully"; // Adds the transaction if the amount is positive
+    }
+    toJSON() {
+        return {
+            name: this.name,
+            id: this.id,
+            balance: this.getBalance(), // Include dynamic balance
+            transaction: this.transaction,
+        };
     }
 }
 class Transaction {
@@ -87,4 +101,4 @@ console.log(customer01.addTransaction(new Transaction(-100, "06-12-2024"))); // 
 // Output: "Insufficient balance"
 console.log(customer01.getBalance()); // Output: 50
 getAllBranches = bank01.getBranches();
-console.log("LevelTwo: " + getAllBranches);
+console.log("LevelThree: " + getAllBranches);
