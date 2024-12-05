@@ -33,6 +33,10 @@ class Branch {
     this.customer.push(NewCustomer);
   }
 
+  getCustomer() {
+    return JSON.stringify(this.customer, null, 2);
+  }
+
   toJSON() {
     return {
       name: this.name,
@@ -103,38 +107,48 @@ const bank01 = new Bank("myBank");
 const branch01 = new Branch("Downtown Branch");
 const branch02 = new Branch("Abdullah Branch");
 
-console.log("//----------------------LevelOne---------");
+// console.log("//----------------------LevelOne---------");
 
 bank01.addBranch(branch01);
 bank01.addBranch(branch02);
 let getAllBranches = bank01.getBranches();
-console.log("LevelOne: " + getAllBranches);
+// console.log("LevelOne: " + getAllBranches);
 
-console.log("//----------------------LevelTwo---------");
+// console.log("//----------------------LevelTwo---------");
 
 const customer01 = new Customer("Turkiano", 0);
+const customer02 = new Customer("Khalid", 1);
 branch01.addCustomer(customer01);
+branch01.addCustomer(customer02);
 
+//transactions
+customer01.addTransaction(new Transaction(100, "04-12-2024"));
+customer02.addTransaction(new Transaction(200, "04-12-2024"));
+customer01.addTransaction(new Transaction(-50, "05-12-2024"))
+customer02.addTransaction(new Transaction(-50, "05-12-2024"))
 //to get the updated branches
 getAllBranches = bank01.getBranches();
-console.log("LevelTwo: " + getAllBranches);
+// console.log(getAllBranches);
 
-console.log("//----------------------LevelThree---------");
+// const getAllCustomers = branch01.customer;
+console.log(branch01.getCustomer());
 
-console.log(
-  "The balance for " + customer01.name + "  is " + customer01.getBalance()
-);
-console.log(customer01.getBalance()); // Output: 0
+// console.log("//----------------------LevelThree---------");
 
-console.log(customer01.addTransaction(new Transaction(100, "04-12-2024"))); // Deposit 100
-console.log(customer01.getBalance()); // Output: 100
+// console.log(
+//   "The balance for " + customer01.name + "  is " + customer01.getBalance()
+// );
+// console.log(customer01.getBalance()); // Output: 0
 
-console.log(customer01.addTransaction(new Transaction(-50, "05-12-2024"))); // Withdraw 50
-console.log(customer01.getBalance()); // Output: 50
+// console.log(customer01.addTransaction(new Transaction(100, "04-12-2024"))); // Deposit 100
+// console.log(customer01.getBalance()); // Output: 100
 
-console.log(customer01.addTransaction(new Transaction(-100, "06-12-2024"))); // Attempt to withdraw 100
-// Output: "Insufficient balance"
-console.log(customer01.getBalance()); // Output: 50
+// console.log(customer01.addTransaction(new Transaction(-50, "05-12-2024"))); // Withdraw 50
+// console.log(customer01.getBalance()); // Output: 50
 
-getAllBranches = bank01.getBranches();
-console.log("LevelThree: " + getAllBranches);
+// console.log(customer01.addTransaction(new Transaction(-100, "06-12-2024"))); // Attempt to withdraw 100
+// // Output: "Insufficient balance"
+// console.log(customer01.getBalance()); // Output: 50
+
+// getAllBranches = bank01.getBranches();
+// console.log("LevelThree: " + getAllBranches);
