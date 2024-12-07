@@ -1,59 +1,34 @@
 
+class StringCollection {
+  private _theCollection: string[] = [];
+  constructor(...items: string[]) {
+    this._theCollection = this._theCollection.concat(items);
+  }
+  //01. Create Function
+  add(item: string) {
+    this._theCollection.push(item);
+  }
 
-//-------------------------Intersection Example--------------
-//delcaring a type 01
-type Person = {
-  name: string 
-  age: number
+  //02.Read Function
+  getAll() {
+    return this._theCollection;
+  }
+
+  //03.Edit Function
+  edit(oldItem: string, newItem: string) {
+    const index = this._theCollection.indexOf(oldItem);
+    if (index !== -1) {
+      this._theCollection[index] = newItem;
+    } else {
+      console.log(`item "${oldItem}" not found in the collection.`);
+    }
+  }
+
+  //04.Delete Function
+  remove(item: string) {
+    const index = this._theCollection.indexOf(item);
+    if (index === -1) {
+      this._theCollection.splice(index);
+    }
+  }
 }
-
-//delcaring a type 02
-type Student = {
-  cohort: string
-}
-//Type aliases: can store anything
-type PersonStudent = Person & Student
-
-//assigning the aliases type to an object
-const student: PersonStudent  = {
-  name: 'John',
-  age: 38,
-  cohort: "C#"
-}
-
-
-console.log(student)
-
-
-
-
-//-------------------------Union Type Example 01--------------
-
-//two data types assigned to one single variable
-function printMessage(message: string | number){
-  return message;
-}
-
-printMessage("Success");
-printMessage("Failed");
-printMessage("Pending");
-printMessage(200);
-printMessage(404);
-
-
-
-//-------------------------Union Type Example 02--------------
-//a.declaring two data types for the local variable
-type mesg = string | number 
-//b. declaring values of the local variable
-type Status = "Success" | "Failed" | "Pending" | 400 | 200
-
-//c.declaring a function using the the above two types
-function printMessage02(mesg: Status){
-  return mesg;
-}
-
-
-
-
-
