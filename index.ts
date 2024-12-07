@@ -35,7 +35,7 @@ class StringCollection {
 //-----------------The implementation-----------------------
 
 const collection = new StringCollection("Cars", "Boats", "Airplines");
-collection.add("Holicapters");
-collection.edit("Cars", "Dogs");
-collection.remove("Airplines");
-console.log(collection.getAll())
+collection.add("Holicapters"); //01. Create
+collection.edit("Cars", "Dogs"); //02.Update
+collection.remove("Airplines"); //03. Delete
+console.log(collection.getAll())//04. Read
