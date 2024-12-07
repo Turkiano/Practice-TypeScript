@@ -1,12 +1,12 @@
 
-class StringCollection<T>{
-  private _theCollection: T[] = [];
-  constructor(...items: T[]) {
+class StringCollection<T>{//01.Add the <T>tag after class name
+  private _theCollection: T[] = [];//02.Replace T as data type
+  constructor(...items: T[]) {//02.Replace T as data type
     this._theCollection = this._theCollection.concat(items);
   }
 
   //01. Create Function
-  add(item: T) {
+  add(item: T) {//03.Replace T as data type in function
     this._theCollection.push(item);
   }
 
@@ -16,7 +16,7 @@ class StringCollection<T>{
   }
 
   //03.Edit Function
-  edit(oldItem: T, newItem: T) {
+  edit(oldItem: T, newItem: T) {//03.Replace T as data type in function
     const index = this._theCollection.indexOf(oldItem);
     if (index !== -1) {
       this._theCollection[index] = newItem;
@@ -26,7 +26,7 @@ class StringCollection<T>{
   }
 
   //04.Delete Function
-  remove(item: T) {
+  remove(item: T) {//03.Replace T as data type in function
     const index = this._theCollection.indexOf(item);
     if (index !== -1) {
       this._theCollection.splice(index, 1);
