@@ -1,10 +1,12 @@
-class StringCollection {
-  private _theCollection: string[] = [];
-  constructor(...items: string[]) {
+
+class StringCollection<T>{
+  private _theCollection: T[] = [];
+  constructor(...items: T[]) {
     this._theCollection = this._theCollection.concat(items);
   }
+
   //01. Create Function
-  add(item: string) {
+  add(item: T) {
     this._theCollection.push(item);
   }
 
@@ -14,7 +16,7 @@ class StringCollection {
   }
 
   //03.Edit Function
-  edit(oldItem: string, newItem: string) {
+  edit(oldItem: T, newItem: T) {
     const index = this._theCollection.indexOf(oldItem);
     if (index !== -1) {
       this._theCollection[index] = newItem;
@@ -24,7 +26,7 @@ class StringCollection {
   }
 
   //04.Delete Function
-  remove(item: string) {
+  remove(item: T) {
     const index = this._theCollection.indexOf(item);
     if (index !== -1) {
       this._theCollection.splice(index, 1);
@@ -38,4 +40,4 @@ const collection = new StringCollection("Cars", "Boats", "Airplines");
 collection.add("Holicapters"); //01. Create
 collection.edit("Cars", "Dogs"); //02.Update
 collection.remove("Airplines"); //03. Delete
-console.log(collection.getAll())//04. Read
+console.log(collection.getAll())//04.
