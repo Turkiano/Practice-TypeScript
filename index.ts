@@ -1,4 +1,3 @@
-
 class StringCollection {
   private _theCollection: string[] = [];
   constructor(...items: string[]) {
@@ -27,8 +26,16 @@ class StringCollection {
   //04.Delete Function
   remove(item: string) {
     const index = this._theCollection.indexOf(item);
-    if (index === -1) {
-      this._theCollection.splice(index);
+    if (index !== -1) {
+      this._theCollection.splice(index, 1);
     }
   }
 }
+
+//-----------------The implementation-----------------------
+
+const collection = new StringCollection("Cars", "Boats", "Airplines");
+collection.add("Holicapters");
+collection.edit("Cars", "Dogs");
+collection.remove("Airplines");
+console.log(collection.getAll())
